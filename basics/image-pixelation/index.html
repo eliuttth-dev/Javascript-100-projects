@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="./main.js" defer></script>
+    <title>Advanced Image Pixelation</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        canvas {
+            max-width: 500px;
+            border: 1px solid #ccc;
+            cursor: crosshair;
+        }
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        #selectionRect {
+            position: absolute;
+            border: 2px dashed red;
+            pointer-events: none;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="file" id="imageInput" accept="image/*">
+        <label>Pixel Size: <input type="number" id="pixelSize" value="20" min="2" max="50"></label>
+        <label>Shape: 
+            <select id="pixelShape">
+                <option value="square">Square</option>
+                <option value="circle">Circle</option>
+            </select>
+        </label>
+        <label>Palette: 
+            <select id="colorPalette">
+                <option value="full">Full Color</option>
+                <option value="grayscale">Grayscale</option>
+                <option value="sepia">Sepia</option>
+                <option value="retro">Retro 8-bit</option>
+            </select>
+        </label>
+        <div class="controls">
+            <button onclick="pixelateImage()">Pixelate Entire Image</button>
+            <button onclick="toggleSelectionMode()">Select Area</button>
+            <button onclick="pixelateSelectedArea()">Pixelate Selected Area</button>
+            <button onclick="animatePixelation()">Animate Pixelation</button>
+            <button onclick="resetImage()">Reset</button>
+        </div>
+        <canvas id="canvas"></canvas>
+        <div id="selectionRect"></div>
+    </div>
+</body>
+</html>
